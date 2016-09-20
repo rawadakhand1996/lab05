@@ -16,7 +16,7 @@ public class PersonCreator
     private int weight;//--176
     private String SSN;//152-22-1564
     private String address;//-- 6063 Cedar Swamp Rd. Glen Head NY11545
-    private int myDOB;// 05/03/1996
+    private String myDOB;// 5-3-1996
     private String phoneNumber;
     
     /* 
@@ -79,7 +79,7 @@ public PersonCreator(String myFirstName, String myLastName)
  Input: users input their numbers and area code in format
  Output:Only outputs if error but purpose is to change to phone number from 000-00-000 to something the user wants
  Example: 609-123-1155
- */public void changeNumber(int areaCode, int numBegin, int numEnd)
+ */public void setNumber(int areaCode, int numBegin, int numEnd)
 {
     //if areaCode is bad, tell user to input something else,
     if(areaCode < 100 ||areaCode > 999){
@@ -120,14 +120,23 @@ public void setAddress(String street)
    address=street; // sets street address according to the user's will
 }
 
-public void setDOB(int DOB)
+public void setDOB(int day, int month, int year)
 {
-    DOB=myDOB; // sets date of birth
+    // sets date of birth
+    if( day < 1 || day > 31 ){
+        System.err.println("Print enter a valid day,");
+    } else if ( month < 1 || month > 12){
+        System.err.println(" Please enter a valid month.");
+    } else if ( year < 1900 || year > 2016){
+        System.err.println("Please enter a valid year.");
+    } else {// if the (DOB <1900 || DOB > 2016) is not true, do
+        myDOB= month + "-" + day + "-" + "-" + year;
+    }
 }
 
 
 
-public void PersonCreator()// prints out all the information
+public void printPersonCreator()// prints out all the information
 {
     System.out.println("Name: " + firstName +" " + lastName);
     System.out.println("Age: " + age);
